@@ -1,2 +1,30 @@
+.dialogs {
+  display: grid;
+  grid-template-columns: 2fr 10fr;
+}
 
+.dialogItems {
+  /* "-" is forbidden */
+  padding: 20px;
+}
 
+.dialog {
+  padding: 0.3rem;
+}
+
+.dialog a {
+  text-decoration: none;
+  color: azure;
+  padding: 10px;
+}
+.dialog a.active {
+  color: red;
+}
+
+.massages {
+  padding: 10px;
+}
+
+.massage {
+  padding: 0.3rem;
+}

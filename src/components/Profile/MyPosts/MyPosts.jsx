@@ -4,7 +4,7 @@ import Post from './Post/Post';
 
 const MyPosts = (props) => {
   return (
-    <div>
+    <div className={s.postsBlock}>
       My posts {props.count}
       <div>
         <textarea></textarea>
