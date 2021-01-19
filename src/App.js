@@ -20,12 +20,12 @@ const App = (props) => {
           <Route
             path="/messages"
             render={() => (
-              <Dialogs messages={props.messages} dialogs={props.dialogs} />
+              <Dialogs messages={props.appState.messagesData} dialogs={props.appState.dialogsData} />
             )}
           />
           <Route
             path="/profile"
-            render={() => <Profile posts={props.posts} />}
+            render={() => <Profile posts={props.appState.posts} />}
           />
           <Route path="/news" render={() => <News />} />
           <Route path="/settings" render={() => <Settings />} />
