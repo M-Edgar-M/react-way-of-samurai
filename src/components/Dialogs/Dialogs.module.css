@@ -17,6 +17,13 @@
   color: azure;
   padding: 10px;
 }
+
+.dialog img {
+  width: 50px;
+  height: 50px;
+  border-radius: 30px;
+}
+
 .dialog a.active {
   color: red;
 }
