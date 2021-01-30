@@ -20,7 +20,7 @@ const App = (props) => {
           <Route
             path="/messages"
             render={() => (
-              <Dialogs
+              <Dialogs updateMessage={props.updateMessage} addNewMessage={props.addNewMessage}
                 state={props.state.dialogsPage}
                 
               />

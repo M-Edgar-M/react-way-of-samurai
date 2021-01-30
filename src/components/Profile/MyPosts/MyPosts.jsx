@@ -8,7 +8,8 @@ const MyPosts = (props) => {
     <Post message={p.message} likesCount={p.likesCount} />
   ));
   let addPostElement = React.createRef();
-  let addPost = (text) => {
+
+  let addPost = () => {
     props.addPost();
   };
 
