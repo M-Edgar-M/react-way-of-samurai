@@ -69,6 +69,9 @@ let store = {
   subscriber(observer) {
     this._rerenderEntireTree = observer;
   },
+  dispach() {
+    
+  }
 };
 
 export default store;
