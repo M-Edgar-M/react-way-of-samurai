@@ -1,5 +1,3 @@
-
-
 // let State = {
 //   id: ID,
 //   message: newMessage
@@ -14,15 +12,15 @@ let store = {
         { message: "GG's", id: 3, likesCount: 55 },
         { message: "gege", id: 4, likesCount: 120 },
       ],
-  
+
       newPostText: "It_kamasutra",
     },
-  
+
     dialogsPage: {
       messagesData: [
         { id: 1, message: '"HI, how are you?"' },
         { id: 2, message: "I'm fine" },
-        { id: 3, message: "Yo" }
+        { id: 3, message: "Yo" },
       ],
       dialogsData: [
         { id: 1, name: "Dimych" },
@@ -31,13 +29,11 @@ let store = {
         { id: 4, name: "Sash" },
         { id: 5, name: "Vika" },
         { id: 6, name: "Yura" },
-      ]
-  
-  
+      ],
     },
   },
   _rerenderEntireTree() {
-    console.log('something');
+    console.log("something");
   },
   getState() {
     return this._state;
@@ -48,7 +44,7 @@ let store = {
       message: this._state.profilePage.newPostText,
       likesCount: 11,
     };
-  
+
     this._state.profilePage.posts.push(newPost);
     this._state.profilePage.newPostText = "";
     this._rerenderEntireTree(this._state);
@@ -65,7 +61,6 @@ let store = {
     };
     this._state.dialogsPage.messagesData.push(newMessage);
     this._rerenderEntireTree(this._state);
-  
   },
   updateMessage(text) {
     this._state.dialogsPage.messagesData.message = text;
@@ -73,8 +68,7 @@ let store = {
   },
   subscriber(observer) {
     this._rerenderEntireTree = observer;
-  }
-}
-
+  },
+};
 
 export default store;

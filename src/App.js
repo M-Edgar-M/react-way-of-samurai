@@ -11,6 +11,14 @@ import Music from "./components/Music/Music";
 import { BrowserRouter, Route } from "react-router-dom";
 
 const App = (props) => {
+  let d = new Date().toLocaleString('en-US', {
+    timeZone: "America/Los_Angeles"
+  });
+  console.log(d);
+
+  // console.log(d.toLocaleString('ru-RU', {
+  //   timeZone: "America/New_York"
+  // }));
   return (
     <BrowserRouter>
       <div className="app-wrapper">
