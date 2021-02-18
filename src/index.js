@@ -1,13 +1,13 @@
 import "./index.css";
 import ReactDOM from 'react-dom';
 import App from './App';
-import { addPost, updateNewPost, updateMessage, addNewMessage, subscriber } from './components/redux/state';
+import { dispatch, updateNewPost, updateMessage, addNewMessage, subscriber } from './components/redux/state';
 import * as serviceWorker from "./serviceWorker";
 import store from "./components/redux/state";
 
 
 let rerenderEntireTree = () => {
-    ReactDOM.render(<App state={store.getState()} addPost={store.addPost.bind(store)} updateNewPost={store.updateNewPost.bind(store)} addNewMessage={store.addNewMessage.bind(store)} updateMessage={store.updateMessage.bind(store)} />, document.getElementById("root"));
+    ReactDOM.render(<App state={store.getState()} dispatch={store.dispatch.bind(store)} addNewMessage={store.addNewMessage.bind(store)} updateMessage={store.updateMessage.bind(store)} />, document.getElementById("root"));
 };
 
 rerenderEntireTree();
