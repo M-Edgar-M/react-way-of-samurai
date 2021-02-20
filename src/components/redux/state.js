@@ -3,6 +3,19 @@
 //   message: newMessage
 // }
 
+export const addPostActionCriator = () => {
+  return {
+    type: "ADD-POST",
+  };
+};
+
+export const updateNewPostActionCriator = (text) => {
+  return {
+    type: "UPDATE-NEW-POST",
+    newText: text,
+  };
+};
+
 let store = {
   _state: {
     profilePage: {
@@ -22,6 +35,7 @@ let store = {
         { id: 2, message: "I'm fine" },
         { id: 3, message: "Yo" },
       ],
+
       dialogsData: [
         { id: 1, name: "Dimych" },
         { id: 2, name: "Valera" },
@@ -30,6 +44,8 @@ let store = {
         { id: 5, name: "Vika" },
         { id: 6, name: "Yura" },
       ],
+
+      newMessageText: "",
     },
   },
   _rerenderEntireTree() {
@@ -39,41 +55,35 @@ let store = {
     return this._state;
   },
 
-  updateNewPost(text) {
-    this._state.profilePage.newPostText = text;
-    this._rerenderEntireTree(this._state);
-  },
-  addNewMessage(text) {
-    let newMessage = {
-      id: 4,
-      message: text,
-    };
-    this._state.dialogsPage.messagesData.push(newMessage);
-    this._rerenderEntireTree(this._state);
-  },
-  updateMessage(text) {
-    this._state.dialogsPage.messagesData.message = text;
-    this._rerenderEntireTree(this._state);
-  },
   subscriber(observer) {
-    this._rerenderEntireTree = observer;
+  this._rerenderEntireTree = observer;
   },
   dispatch(action) {
-    if(action.type === 'ADD-POST'){
-    let newPost = {
-      id: 5,
-      message: this._state.profilePage.newPostText,
-      likesCount: 11,
-    };
+    if (action.type === "ADD-POST") {
+      let newPost = {
+        id: 5,
+        message: this._state.profilePage.newPostText,
+        likesCount: 11,
+      };
 
-    this._state.profilePage.posts.push(newPost);
-    this._state.profilePage.newPostText = "";
-    this._rerenderEntireTree(this._state);
-    } else if(action.type === 'UPDATE-NEW-POST') {
-      this._state.profilePage.newPostText = action.text;
+      this._state.profilePage.posts.push(newPost);
+      this._state.profilePage.newPostText = "";
+      this._rerenderEntireTree(this._state);
+    } else if (action.type === "UPDATE-NEW-POST") {
+      this._state.profilePage.newPostText = action.newText;
+      this._rerenderEntireTree(this._state);
+    } else if (action.type === "ADD-NEW-MASSAGE") {
+      debugger
+      let newMessage = {
+        id: 4,
+        message: action.text,
+        name: action.name,
+        img: action.img
+      };
+      this._state.dialogsPage.messagesData.push(newMessage);
       this._rerenderEntireTree(this._state);
     }
-  }
+  },
 };
 
 export default store;

@@ -5,10 +5,14 @@ import Message from "./Message/Message.jsx";
 
 const Dialogs = (props) => {
   let dialogs = props.state.dialogsData.map((d) => (
-    <DialogItem name={d.name} id={d.id} addNewMessage={props.addNewMessage} updateMessage={props.updateMessage} />
+    <DialogItem key={d.id} name={d.name} id={d.id} dispatch={props.dispatch}/>
   ));
   let messages = props.state.messagesData.map((m) => (
+    <>
+    <p>{m?.name}</p>
+    <img style={{width: '100px', height: '100px'}} src={m?.img}></img>
     <Message message={m.message} id={m.id} />
+    </>
   ));
   return (
     <div className={s.dialogs}>
