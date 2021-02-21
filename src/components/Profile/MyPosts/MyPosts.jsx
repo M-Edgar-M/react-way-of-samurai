@@ -1,9 +1,11 @@
 import React from "react";
 //import { dispatch } from "../../redux/state";
-import { addPostActionCriator, updateNewPostActionCriator } from "../../redux/state";
+import {
+  addPostActionCriator,
+  updateNewPostActionCriator,
+} from "../../redux/profile_page_reducer";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-
 
 const MyPosts = (props) => {
   let postsElements = props.posts.map((p) => (
@@ -18,18 +20,19 @@ const MyPosts = (props) => {
   let onPostChange = (text) => {
     text = addPostElement.current.value;
     props.dispatch(updateNewPostActionCriator(text));
-
   };
 
   return (
     <div className={s.postsBlock}>
       My posts
       <div>
-        <textarea value={props.newPostText} onChange={onPostChange}
+        <textarea
+          value={props.newPostText}
+          onChange={onPostChange}
           ref={addPostElement}
           placeholder="Type some text here"
           maxLength="35"
-         />
+        />
         <button onClick={addPost}>Add post</button>
       </div>
       <div className={s.posts}>

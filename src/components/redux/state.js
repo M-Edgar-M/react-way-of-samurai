@@ -2,19 +2,8 @@
 //   id: ID,
 //   message: newMessage
 // }
-
-export const addPostActionCriator = () => {
-  return {
-    type: "ADD-POST",
-  };
-};
-
-export const updateNewPostActionCriator = (text) => {
-  return {
-    type: "UPDATE-NEW-POST",
-    newText: text,
-  };
-};
+import profilePageReducer from "./profile_page_reducer";
+import dialogsPageReducer from "./dialogs_page_reducer";
 
 let store = {
   _state: {
@@ -49,40 +38,25 @@ let store = {
     },
   },
   _rerenderEntireTree() {
-    console.log("something");
+    
   },
   getState() {
     return this._state;
   },
 
   subscriber(observer) {
-  this._rerenderEntireTree = observer;
+    this._rerenderEntireTree = observer;
   },
   dispatch(action) {
-    if (action.type === "ADD-POST") {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likesCount: 11,
-      };
-
-      this._state.profilePage.posts.push(newPost);
-      this._state.profilePage.newPostText = "";
-      this._rerenderEntireTree(this._state);
-    } else if (action.type === "UPDATE-NEW-POST") {
-      this._state.profilePage.newPostText = action.newText;
-      this._rerenderEntireTree(this._state);
-    } else if (action.type === "ADD-NEW-MASSAGE") {
-      debugger
-      let newMessage = {
-        id: 4,
-        message: action.text,
-        name: action.name,
-        img: action.img
-      };
-      this._state.dialogsPage.messagesData.push(newMessage);
-      this._rerenderEntireTree(this._state);
-    }
+    this._state.profilePage = profilePageReducer(
+      this._state.profilePage,
+      action
+    );
+    this._state.dialogsPage = dialogsPageReducer(
+      this._state.dialogsPage,
+      action
+    );
+    this._rerenderEntireTree(this._state);
   },
 };
 

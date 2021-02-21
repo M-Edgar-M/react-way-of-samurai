@@ -1,7 +1,6 @@
 import "./index.css";
 import ReactDOM from 'react-dom';
 import App from './App';
-import { dispatch, updateMessage, addNewMessage, subscriber } from './components/redux/state';
 import * as serviceWorker from "./serviceWorker";
 import store from "./components/redux/state";
 
@@ -10,7 +9,7 @@ let rerenderEntireTree = () => {
     ReactDOM.render(<App state={store.getState()} dispatch={store.dispatch.bind(store)} />, document.getElementById("root"));
 };
 
-rerenderEntireTree();
+//rerenderEntireTree();
 
 store.subscriber(rerenderEntireTree);
 
