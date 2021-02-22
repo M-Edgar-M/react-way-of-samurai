@@ -1,4 +1,18 @@
-const profilePageReducer = (state, action) => {
+let initialState = {
+  profilePage: {
+    posts: [
+      { message: "Hi, how are you?", id: 1, likesCount: 11 },
+      { message: "It's my first post.", id: 2, likesCount: 12 },
+      { message: "GG's", id: 3, likesCount: 55 },
+      { message: "gege", id: 4, likesCount: 120 },
+    ],
+
+    newPostText: "It_kamasutra",
+  },
+}
+
+const profilePageReducer = (state = initialState, action) => {
+
   switch (action.type) {
     case "ADD-POST":
       let newPost = {
