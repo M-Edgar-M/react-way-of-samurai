@@ -20,6 +20,7 @@ let initialState = {
 }
 
 const dialogsPageReducer = (state = initialState, action) => {
+  let stateCopy = {...state};
   // switch (action.type) {
   //   case "ADD-NEW-MESSAGE":
   //     let newMessage = {
@@ -41,9 +42,11 @@ const dialogsPageReducer = (state = initialState, action) => {
       name: action.name,
       img: action.img,
     };
-    state.messagesData.push(newMessage);
+    
+    stateCopy.messagesData = [...state.messagesData];
+    stateCopy.messagesData.push(newMessage);
   }
-  return state;
+  return stateCopy;
 };
 
 export default dialogsPageReducer;
