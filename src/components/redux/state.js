@@ -48,7 +48,6 @@ let store = {
     this._rerenderEntireTree = observer;
   },
   dispatch(action) {
-    debugger;
     this._state.profilePage = profilePageReducer(
       this._state.profilePage,
       action

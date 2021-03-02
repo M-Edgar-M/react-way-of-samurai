@@ -12,11 +12,12 @@ const DialogItem = (props) => {
   let addNewMessage = () => {
    //text = dialoMessageElement.current.value;
    if(text != '') {
-    props.dispatch({type: 'ADD-NEW-MASSAGE', 
-    text, 
-    name: props.name, 
-    img: 'https://images.pexels.com/photos/4052809/pexels-photo-4052809.jpeg?cs=srgb&dl=pexels-mati-mango-4052809.jpg&fm=jpg'});
-  setText('')
+     props.onAddNewMessage(text);
+    // props.dispatch({type: 'ADD-NEW-MASSAGE', 
+    // text, 
+    // name: props.name, 
+    // img: 'https://images.pexels.com/photos/4052809/pexels-photo-4052809.jpeg?cs=srgb&dl=pexels-mati-mango-4052809.jpg&fm=jpg'});
+    setText('')
    } else {
      return false;
    }

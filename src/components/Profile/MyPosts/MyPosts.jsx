@@ -1,25 +1,23 @@
 import React from "react";
-//import { dispatch } from "../../redux/state";
-import {
-  addPostActionCriator,
-  updateNewPostActionCriator,
-} from "../../redux/profile_page_reducer";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
+
 const MyPosts = (props) => {
-  let postsElements = props.posts.map((p) => (
+  let postsElements = props.state.profilePage.posts.map((p) => (
     <Post message={p.message} likesCount={p.likesCount} />
   ));
   let addPostElement = React.createRef();
 
   let addPost = () => {
-    props.dispatch(addPostActionCriator());
+    //props.dispatch(addPostActionCriator());
+    props.onAddNewPost();
   };
 
   let onPostChange = (text) => {
     text = addPostElement.current.value;
-    props.dispatch(updateNewPostActionCriator(text));
+    //props.dispatch(updateNewPostActionCriator(text));
+      props.onNewPostChange(text);
   };
 
   return (
@@ -27,7 +25,7 @@ const MyPosts = (props) => {
       My posts
       <div>
         <textarea
-          value={props.newPostText}
+          value={props.state.profilePage.newPostText}
           onChange={onPostChange}
           ref={addPostElement}
           placeholder="Type some text here"

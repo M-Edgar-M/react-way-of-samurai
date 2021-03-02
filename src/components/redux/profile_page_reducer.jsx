@@ -15,13 +15,14 @@ const profilePageReducer = (state = initialState, action) => {
 
   switch (action.type) {
     case "ADD-POST": {
-      let newPost = {
-        id: 5,
-        message: state.newPostText,
-        likesCount: 11,
-      };
+      
       let stateCopy = {...state};
       stateCopy.posts = [...state.posts];
+      let newPost = {
+        id: 5,
+        message: stateCopy.newPostText,
+        likesCount: 11,
+      };
       stateCopy.posts.push(newPost);
       stateCopy.newPostText = "";
       return stateCopy;

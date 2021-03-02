@@ -2,10 +2,11 @@ import React from "react";
 import s from "./Dialogs.module.css";
 import DialogItem from "./DialogItem/DialogItem.jsx";
 import Message from "./Message/Message.jsx";
+import DialogItemContainer from "./DialogItem/DialogItemContainer";
 
 const Dialogs = (props) => {
-  let dialogs = props.state.dialogsData.map((d) => (
-    <DialogItem key={d.id} name={d.name} id={d.id} dispatch={props.dispatch}/>
+  let dialogs = props.state.dialogsData.map((el) => (
+    <DialogItemContainer key={el.id} name={el.name} id={el.id} dispatch={props.dispatch}/>
   ));
   let messages = props.state.messagesData.map((m) => (
     <>
